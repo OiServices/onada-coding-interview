@@ -6,6 +6,10 @@ export const routes: Routes = [
   {
     path: 'candidate-form',
     loadComponent: () => import('./candidate-form/candidate-form.component').then(m => m.CandidateFormComponent)
+  },
+  {
+    path: 'challenge',
+    loadComponent: () => import('./challenge/challenge.component').then(m => m.ChallengeComponent)
   }
 ];
 

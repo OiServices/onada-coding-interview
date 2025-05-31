@@ -8,6 +8,8 @@ import { Router } from '@angular/router';
   styleUrls: ['./interview-landing.component.css']
 })
 export class InterviewLandingComponent {
+  currentYear: number = new Date().getFullYear(); // ✅ Add this
+
   constructor(private router: Router) {}
 
   startInterview() {
