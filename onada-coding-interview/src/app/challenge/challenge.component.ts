@@ -23,39 +23,69 @@ export class ChallengeComponent implements OnInit {
   email = '';
   github = '';
   track = '';
+  challengeId = 1;
   challengeTitle = '';
   challengeDescription = '';
 
-  challenges: any = {
-    Frontend: {
-      title: 'Live Incident Feed UI',
-      description: 'Build a dashboard with Tailwind and Angular that shows live safety alerts.'
+  frontendChallenges = [
+    {
+      id: 1,
+      title: 'Responsive Navbar',
+      description:
+        'Create a responsive navbar using Tailwind CSS with active state styling.'
     },
-    Backend: {
+    {
+      id: 2,
+      title: 'Login Form with Validation',
+      description:
+        'Build a login form in Angular using reactive forms with validation.'
+    },
+    // add more later
+  ];
+
+  backendChallenges = [
+    {
+      id: 1,
       title: 'Incident API',
       description: 'Create a Node or Flask API that logs/fetches incidents with timestamps.'
-    },
-    'AI/ML': {
+    }
+  ];
+
+  aiChallenges = [
+    {
+      id: 1,
       title: 'Crop Disease Predictor',
       description: 'Simulate a Python model that accepts image input and predicts the disease.'
     }
-  };
+  ];
 
   constructor(private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
+    this.track = this.route.snapshot.paramMap.get('track') || 'Frontend';
+    this.challengeId = Number(this.route.snapshot.paramMap.get('id')) || 1;
+
+    this.route.queryParams.subscribe((params) => {
       this.fullName = params['fullName'] || '';
       this.email = params['email'] || '';
       this.github = params['github'] || '';
-      this.track = params['track'] || 'Frontend';
-
-      const selected = this.challenges[this.track];
-      if (selected) {
-        this.challengeTitle = selected.title;
-        this.challengeDescription = selected.description;
-      }
     });
+
+    const list: any = {
+      Frontend: this.frontendChallenges,
+      Backend: this.backendChallenges,
+      'AI/ML': this.aiChallenges,
+      frontend: this.frontendChallenges,
+      backend: this.backendChallenges,
+      ai: this.aiChallenges,
+      ai_ml: this.aiChallenges,
+      ai_ml_full: this.aiChallenges
+    };
+
+    const challengeList = list[this.track];
+    const challenge = challengeList?.find((c: any) => c.id === this.challengeId);
+    this.challengeTitle = challenge?.title || 'Challenge Not Found';
+    this.challengeDescription = challenge?.description || '';
   }
 
   submitChallenge() {
@@ -64,6 +94,7 @@ export class ChallengeComponent implements OnInit {
       email: this.email,
       github: this.github,
       track: this.track,
+      challengeId: this.challengeId,
       submittedCode: this.code,
       submittedAt: new Date().toISOString(),
       score: null
