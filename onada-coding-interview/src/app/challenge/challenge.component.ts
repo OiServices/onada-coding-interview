@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MonacoEditorModule } from 'ngx-monaco-editor-v2';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -18,6 +19,9 @@ export class ChallengeComponent implements OnInit {
     automaticLayout: true
   };
 
+  fullName = '';
+  email = '';
+  github = '';
   track = '';
   challengeTitle = '';
   challengeDescription = '';
@@ -37,18 +41,34 @@ export class ChallengeComponent implements OnInit {
     }
   };
 
+  constructor(private route: ActivatedRoute) {}
+
   ngOnInit(): void {
-    this.track = localStorage.getItem('track') || 'Frontend';
-    const selected = this.challenges[this.track];
-    if (selected) {
-      this.challengeTitle = selected.title;
-      this.challengeDescription = selected.description;
-    }
+    this.route.queryParams.subscribe(params => {
+      this.fullName = params['fullName'] || '';
+      this.email = params['email'] || '';
+      this.github = params['github'] || '';
+      this.track = params['track'] || 'Frontend';
+
+      const selected = this.challenges[this.track];
+      if (selected) {
+        this.challengeTitle = selected.title;
+        this.challengeDescription = selected.description;
+      }
+    });
   }
 
   submitChallenge() {
-    console.log('Submitted code:', this.code);
-    alert('Challenge submitted! (Stored in console for now)');
+    console.log('Candidate Info:', {
+      fullName: this.fullName,
+      email: this.email,
+      github: this.github,
+      track: this.track
+    });
+
+    console.log('Submitted Code:', this.code);
+
+    alert('✅ Challenge submitted!\nCheck console for submitted data.');
   }
 }
 
