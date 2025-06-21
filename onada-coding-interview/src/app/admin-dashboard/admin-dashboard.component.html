@@ -1,0 +1,40 @@
+<div class="p-8">
+  <div class="flex justify-between items-center mb-6">
+    <h2 class="text-2xl font-bold">Admin Dashboard</h2>
+    <button (click)="logout()" class="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded shadow">
+      Logout
+    </button>
+  </div>
+
+  <table class="min-w-full bg-white rounded shadow">
+    <thead class="bg-gray-100 text-left">
+      <tr>
+        <th class="p-3">Name</th>
+        <th class="p-3">Email</th>
+        <th class="p-3">GitHub</th>
+        <th class="p-3">Track</th>
+        <th class="p-3">Code</th>
+        <th class="p-3">Submitted</th>
+        <th class="p-3">Score</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sub of submissions; let i = index" class="border-t">
+        <td class="p-3">{{ sub.fullName }}</td>
+        <td class="p-3">{{ sub.email }}</td>
+        <td class="p-3">
+          <a [href]="sub.github" target="_blank" class="text-blue-600 underline">GitHub</a>
+        </td>
+        <td class="p-3">{{ sub.track }}</td>
+        <td class="p-3">
+          <textarea readonly class="text-sm w-64 h-24 bg-gray-100 p-2 rounded">{{ sub.submittedCode }}</textarea>
+        </td>
+        <td class="p-3 text-sm text-gray-500">{{ sub.submittedAt }}</td>
+        <td class="p-3">
+          <input type="number" [value]="sub.score || ''" (input)="updateScore(i, $any($event.target).value)" class="w-20 border px-2 py-1 rounded">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+

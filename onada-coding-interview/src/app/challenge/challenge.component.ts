@@ -59,16 +59,21 @@ export class ChallengeComponent implements OnInit {
   }
 
   submitChallenge() {
-    console.log('Candidate Info:', {
+    const submission = {
       fullName: this.fullName,
       email: this.email,
       github: this.github,
-      track: this.track
-    });
+      track: this.track,
+      submittedCode: this.code,
+      submittedAt: new Date().toISOString(),
+      score: null
+    };
 
-    console.log('Submitted Code:', this.code);
+    const existing = JSON.parse(localStorage.getItem('onada_submissions') || '[]');
+    existing.push(submission);
+    localStorage.setItem('onada_submissions', JSON.stringify(existing));
 
-    alert('✅ Challenge submitted!\nCheck console for submitted data.');
+    alert('✅ Challenge submitted successfully!');
   }
 }
 

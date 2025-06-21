@@ -24,7 +24,7 @@ export class CandidateFormComponent {
   }
 
   submitForm() {
-    console.log({
+    console.log('✅ Form submitted:', {
       fullName: this.fullName,
       email: this.email,
       github: this.github,
@@ -32,8 +32,14 @@ export class CandidateFormComponent {
       resume: this.resume
     });
 
-    // Navigate to challenge page (to be created later)
-    // this.router.navigate(['/challenge']);
+    this.router.navigate(['/challenge'], {
+      queryParams: {
+        fullName: this.fullName,
+        email: this.email,
+        github: this.github,
+        track: this.track
+      }
+    });
   }
 }
 
