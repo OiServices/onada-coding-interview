@@ -27,20 +27,107 @@ export class ChallengeComponent implements OnInit {
   challengeTitle = '';
   challengeDescription = '';
 
-  frontendChallenges = [
+    frontendChallenges = [
     {
       id: 1,
       title: 'Responsive Navbar',
-      description:
-        'Create a responsive navbar using Tailwind CSS with active state styling.'
+      description: 'Create a responsive navbar using Tailwind CSS with active state styling.'
     },
     {
       id: 2,
       title: 'Login Form with Validation',
-      description:
-        'Build a login form in Angular using reactive forms with validation.'
+      description: 'Build a login form in Angular using reactive forms with validation.'
     },
-    // add more later
+    {
+      id: 3,
+      title: 'Toggle View Widget',
+      description: 'In Flutter, create a stateful widget that toggles between two views.'
+    },
+    {
+      id: 4,
+      title: 'Angular Lazy Routing',
+      description: 'Implement Angular routing with 2 child components using lazy loading.'
+    },
+    {
+      id: 5,
+      title: 'Tailwind Pricing Card',
+      description: 'Style a pricing card using Tailwind CSS with hover and responsive layout.'
+    },
+    {
+      id: 6,
+      title: 'Google Map Marker in Flutter',
+      description: 'Integrate Google Maps in Flutter and show a custom marker.'
+    },
+    {
+      id: 7,
+      title: 'API Table Display',
+      description: 'Fetch data from a dummy REST API and display it in a styled Angular table.'
+    },
+    {
+      id: 8,
+      title: 'Angular Modal',
+      description: 'Build a reusable modal component in Angular triggered by a button.'
+    },
+    {
+      id: 9,
+      title: 'ListView in Flutter',
+      description: 'Create a scrollable list in Flutter using ListView.builder.'
+    },
+    {
+      id: 10,
+      title: 'Dark Mode Switcher',
+      description: 'Add light/dark mode toggle using Tailwind CSS and Angular service.'
+    },
+    {
+      id: 11,
+      title: 'Reusable Dropdown',
+      description: 'Build a dropdown component using Angular ControlValueAccessor.'
+    },
+    {
+      id: 12,
+      title: 'Animated Widget in Flutter',
+      description: 'Animate a widget using AnimatedContainer and user interaction.'
+    },
+    {
+      id: 13,
+      title: 'Global State with Angular Services',
+      description: 'Use a shared service to sync data between two Angular components.'
+    },
+    {
+      id: 14,
+      title: 'Password Strength Indicator',
+      description: 'Create a dynamic password strength meter using Angular + Tailwind.'
+    },
+    {
+      id: 15,
+      title: 'Lazy Image Loader',
+      description: 'Implement lazy loading for images with a placeholder in Angular.'
+    },
+    {
+      id: 16,
+      title: 'Flutter List Search + Pagination',
+      description: 'Add search filtering and pagination to a list of data in Flutter.'
+    },
+    {
+      id: 17,
+      title: 'Star Rating UI',
+      description: 'Build a clickable star-rating UI in Angular and store selection.'
+    },
+    {
+      id: 18,
+      title: 'Infinite Scroll Blog Page',
+      description: 'Build an infinite scrolling blog feed styled with Tailwind CSS.'
+    },
+    {
+      id: 19,
+      title: 'Custom Spinner Loader',
+      description: 'Design a loading spinner in Flutter and show during API call.'
+    },
+    {
+      id: 20,
+      title: 'Multi-Step Form Wizard',
+      description: 'Build a 3-step form in Angular with progress indicator and validation.'
+    }
   ];
 
   backendChallenges = [
