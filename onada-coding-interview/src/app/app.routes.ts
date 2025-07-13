@@ -20,6 +20,9 @@ export const routes: Routes = [
       import('./challenge/challenge.component').then(
         (m) => m.ChallengeComponent
       ),
+    data: {
+      renderMode: 'no-prerendering'
+    }
   },
   {
     path: 'admin-login',

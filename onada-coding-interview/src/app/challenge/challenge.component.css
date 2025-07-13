@@ -1,0 +1,12 @@
+/* challenge.component.css */
+
+:host {
+  display: block;
+  width: 100%;
+}
+
+ngx-monaco-editor {
+  display: block;
+  width: 100%;
+}
+

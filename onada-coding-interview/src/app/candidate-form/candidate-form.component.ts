@@ -32,12 +32,12 @@ export class CandidateFormComponent {
       resume: this.resume
     });
 
-    this.router.navigate(['/challenge'], {
+    const lowerTrack = this.track.toLowerCase();
+    this.router.navigate([`/challenge/${lowerTrack}/1`], {
       queryParams: {
         fullName: this.fullName,
         email: this.email,
-        github: this.github,
-        track: this.track
+        github: this.github
       }
     });
   }
